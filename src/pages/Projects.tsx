@@ -13,7 +13,8 @@ import TeamCoverageGrid from "@/components/TeamCoverageGrid";
 import MilestoneTracker from "@/components/MilestoneTracker";
 import SmartTeamBuilder from "@/components/SmartTeamBuilder";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Users, Send, X, Check, XCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { Plus, Users, Send, X, Check, XCircle, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { SKILLS } from "@/data/constants";
 import { toast } from "sonner";
 import {
@@ -24,6 +25,7 @@ import {
 
 const Projects = () => {
   const { profile } = useAuth();
+  const navigate = useNavigate();
   const [projects, setProjects] = useState<Project[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
@@ -291,7 +293,7 @@ const Projects = () => {
                 )}
 
                 {/* Actions */}
-                <div className="flex items-center justify-between pt-3 border-t border-border">
+                <div className="flex items-center justify-between pt-3 border-t border-border gap-2">
                   {isOwner ? (
                     <button onClick={() => setExpandedProject(isExpanded ? null : project.id)}
                       className="flex items-center gap-1 text-sm text-primary font-medium">
@@ -328,6 +330,12 @@ const Projects = () => {
                   ) : (
                     <span className="text-sm text-muted-foreground">Team is full</span>
                   )}
+                  <button
+                    onClick={() => navigate(`/projects/${project.id}`)}
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-secondary text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" /> View
+                  </button>
                 </div>
 
                 {/* Applications (owner view) */}

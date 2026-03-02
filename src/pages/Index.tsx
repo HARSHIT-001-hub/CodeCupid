@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Heart, Zap, Target, ArrowRight, Code } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const Index = () => {
   return (
@@ -14,12 +15,7 @@ const Index = () => {
       <div className="relative container mx-auto px-4 py-20">
         {/* Nav */}
         <nav className="flex items-center justify-between mb-24">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold text-sm">&lt;❤&gt;</span>
-            </div>
-            <span className="font-display font-bold text-xl gradient-text">CodeCupid</span>
-          </div>
+          <Logo size="md" />
           <div className="flex items-center gap-3">
             <Link to="/login" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-medium">
               Sign In

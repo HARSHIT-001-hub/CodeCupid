@@ -1,5 +1,6 @@
 import { useAuth } from "@/context/AuthContext";
 import Layout from "@/components/Layout";
+import EditProfileModal from "@/components/EditProfileModal";
 import { motion } from "framer-motion";
 import { Github, GraduationCap, Building2, Edit3, Database } from "lucide-react";
 import { seedDummyData } from "@/services/firestore";
@@ -9,6 +10,7 @@ import { useState } from "react";
 const Profile = () => {
   const { profile } = useAuth();
   const [seeding, setSeeding] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
   if (!profile) return null;
 
@@ -42,7 +44,10 @@ const Profile = () => {
                 <span className="font-display text-3xl font-bold text-primary">{initials}</span>
               </div>
             )}
-            <button className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg">
+            <button
+              onClick={() => setEditOpen(true)}
+              className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg"
+            >
               <Edit3 className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -79,10 +84,18 @@ const Profile = () => {
               <Github className="w-4 h-4" /> GitHub Profile
             </a>
           )}
+
+          {/* Edit Profile Button */}
+          <button
+            onClick={() => setEditOpen(true)}
+            className="mt-4 w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 btn-primary-glow hover:brightness-110 transition-all"
+          >
+            <Edit3 className="w-4 h-4" /> Edit Profile
+          </button>
         </motion.div>
 
-        {/* Seed Data Button (for setup)
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+        {/* Seed Data Button (for setup) */}
+        {/* <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
           <button
             onClick={handleSeed}
             disabled={seeding}
@@ -93,6 +106,8 @@ const Profile = () => {
           </button>
         </motion.div> */}
       </div>
+
+      <EditProfileModal isOpen={editOpen} onClose={() => setEditOpen(false)} />
     </Layout>
   );
 };

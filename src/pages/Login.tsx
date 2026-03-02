@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { motion } from "framer-motion";
 import { ArrowRight, AlertCircle } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,12 +36,7 @@ const Login = () => {
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold text-sm">&lt;❤&gt;</span>
-            </div>
-            <span className="font-display font-bold text-2xl gradient-text">CodeCupid</span>
-          </div>
+          <Logo size="lg" />
           <p className="text-muted-foreground">Find Your Perfect Tech Match</p>
         </div>
 

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, AlertCircle } from "lucide-react";
+import Logo from "@/components/Logo";
 import { SKILLS, INTERESTS, DEPARTMENTS } from "@/data/constants";
 
 const Signup = () => {
@@ -57,12 +58,7 @@ const Signup = () => {
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-lg">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold text-sm">&lt;❤&gt;</span>
-            </div>
-            <span className="font-display font-bold text-2xl gradient-text">CodeCupid</span>
-          </div>
+          <Logo size="lg" />
           <div className="flex items-center justify-center gap-2 mt-4">
             {[1, 2, 3].map(s => (
               <div key={s} className={`h-1.5 rounded-full transition-all duration-300 ${s <= step ? "bg-primary w-8" : "bg-border w-4"}`} />

@@ -3,6 +3,7 @@ import { useAuth } from "@/context/AuthContext";
 import { motion } from "framer-motion";
 import { Compass, Heart, Briefcase, LogOut, User, MessageCircle, BarChart3 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import Logo from "@/components/Logo";
 
 const navItems = [
   { path: "/discover", label: "Discover", icon: Compass },
@@ -27,12 +28,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Top Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border">
         <div className="container mx-auto flex items-center justify-between h-16 px-4">
-          <Link to="/discover" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold text-xs">&lt;❤&gt;</span>
-            </div>
-            <span className="font-display font-bold text-lg gradient-text">CodeCupid</span>
-          </Link>
+          <Logo size="sm" linkTo="/discover" />
 
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
